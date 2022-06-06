@@ -1,0 +1,37 @@
+Connectivity with mongodb
+---------------------------------------------
+driver installation
+
+C:\Users\Your Name>npm install mongodb
+----------------------------------------------
+1. creating database
+--------------------------------------------------------
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+});
+---------------------------------------------------
+save as crdb.js
+----------------------------------------------------
+C:\Users\Your Name>node ____________.js
+------------------------------------------------------
+--------------------------------------------------------
+2. Creating Collection 
+--------------------------------------------------------
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.createCollection("customers", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+});
+-----------------------------------------------------------
